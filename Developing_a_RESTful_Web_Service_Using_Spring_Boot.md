@@ -136,21 +136,21 @@ Additional dependencies include Hibernate Validator, as we will be doing some va
 The rest is something of my personal preference - Guava, because it's cool ;) and JSR-330 API to replace `@Autowired` annotation with `@Inject`, which I like better.
 
 Last thing that's left is to add Spring Boot Maven Plugin:
-    
-    
-    <build>
-        <plugins>
-    
-            <!-- Spring Boot Maven -->
-    
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-    
-        </plugins>
-    </build>
-    
+
+```xml
+<build>
+    <plugins>
+
+        <!-- Spring Boot Maven -->
+
+        <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+        </plugin>
+
+    </plugins>
+</build>
+```
 
 This plugin does two things:
 
@@ -161,22 +161,22 @@ This plugin does two things:
 
 The execution will start by firing up the main() method, so let's write a class to hold it:
     
-    
-    @Configuration
-    @EnableAutoConfiguration
-    @ComponentScan
-    public class Application extends SpringBootServletInitializer {
-    
-        public static void main(final String[] args) {
-            SpringApplication.run(Application.class, args);
-        }
-    
-        @Override
-        protected final SpringApplicationBuilder configure(final SpringApplicationBuilder application) {
-            return application.sources(Application.class);
-        }
+```java
+@Configuration
+@EnableAutoConfiguration
+@ComponentScan
+public class Application extends SpringBootServletInitializer {
+
+    public static void main(final String[] args) {
+        SpringApplication.run(Application.class, args);
     }
-    
+
+    @Override
+    protected final SpringApplicationBuilder configure(final SpringApplicationBuilder application) {
+        return application.sources(Application.class);
+    }
+}
+```
 
 This class has the following features:
 
@@ -192,38 +192,38 @@ At this point this is all that is required to configure the application, so we c
 
 Let's start with writing a test case for creating a new user through the UserController.
     
-    
-    @RunWith(MockitoJUnitRunner.class)
-    public class UserControllerTest {
-    
-        @Mock
-        private UserService userService;
-    
-        private UserController userController;
-    
-        @Before
-        public void setUp() {
-            userController = new UserController(userService);
-        }
-    
-        @Test
-        public void shouldCreateUser() throws Exception {
-            final User savedUser = stubServiceToReturnStoredUser();
-            final User user = new User();
-            User returnedUser = userController.createUser(user);
-            // verify user was passed to UserService
-            verify(userService, times(1)).save(user);
-            assertEquals("Returned user should come from the service", savedUser, returnedUser);
-        }
-    
-        private User stubServiceToReturnStoredUser() {
-            final User user = new User();
-            when(userService.save(any(User.class))).thenReturn(user);
-            return user;
-        }
-    
+```java
+@RunWith(MockitoJUnitRunner.class)
+public class UserControllerTest {
+
+    @Mock
+    private UserService userService;
+
+    private UserController userController;
+
+    @Before
+    public void setUp() {
+        userController = new UserController(userService);
     }
-    
+
+    @Test
+    public void shouldCreateUser() throws Exception {
+        final User savedUser = stubServiceToReturnStoredUser();
+        final User user = new User();
+        User returnedUser = userController.createUser(user);
+        // verify user was passed to UserService
+        verify(userService, times(1)).save(user);
+        assertEquals("Returned user should come from the service", savedUser, returnedUser);
+    }
+
+    private User stubServiceToReturnStoredUser() {
+        final User user = new User();
+        when(userService.save(any(User.class))).thenReturn(user);
+        return user;
+    }
+
+}
+```
 
 From this test case we see that in order to create a new user, we need to have `UserController` with `createUser()` method, that takes the `User` object and passes it to the `UserService`, that will be responsible for doing the actual work.
 
@@ -233,24 +233,24 @@ From the REST point of view it will hook up to the POST http method of the `/use
 
 So let's implement it:
     
-    
-    @RestController
-    public class UserController {
-    
-        private final UserService userService;
-    
-        @Inject
-        public UserController(final UserService userService) {
-            this.userService = userService;
-        }
-    
-        @RequestMapping(value = "/user", method = RequestMethod.POST)
-        public User createUser(@RequestBody @Valid final User user) {
-            return userService.save(user);
-        }
-    
+```java
+@RestController
+public class UserController {
+
+    private final UserService userService;
+
+    @Inject
+    public UserController(final UserService userService) {
+        this.userService = userService;
     }
-    
+
+    @RequestMapping(value = "/user", method = RequestMethod.POST)
+    public User createUser(@RequestBody @Valid final User user) {
+        return userService.save(user);
+    }
+
+}
+```
 
 Points to notice:
 
@@ -262,31 +262,31 @@ Points to notice:
 
 How about UserService and User then? For the test to pass we need only an interface for UserService, because it is not even created, but merely mocked. It should take `User` objects into the `save()` methods which will be used to save them, then it should return saved `User` object back to the caller.
     
-    
-    public interface UserService {
-    
-        User save(User user);
-    
-    }
-    
+```java
+public interface UserService {
+
+    User save(User user);
+
+}
+```
 
 As for `User` object it can be anything at this stage, for example:
     
-    
-    public class User {
-    
-        @NotNull
-        @Size(max = 64)
-        private String id;
-    
-        @NotNull
-        @Size(max = 64)
-        private String password;
-    
-        // getters
-    
-    }
-    
+```java
+public class User {
+
+    @NotNull
+    @Size(max = 64)
+    private String id;
+
+    @NotNull
+    @Size(max = 64)
+    private String password;
+
+    // getters
+
+}
+```
 
 Where `@NotNull` and `@Size` are validation constraints the object will be checked against while being deserialized from the request body.
 
@@ -294,47 +294,48 @@ Where `@NotNull` and `@Size` are validation constraints the object will be check
 
 Having an interface for `UserService` it would be useful to have an implementation of this `save()` method to do the work for us. Let's start with the test case to see how it might work:
     
-    
-    @RunWith(MockitoJUnitRunner.class)
-    public class UserServiceImplTest {
-    
-        @Mock
-        private UserRepository userRepository;
-    
-        private UserService userService;
-    
-        @Before
-        public void setUp() {
-            userService = new UserServiceImpl(userRepository);
-        }
-    
-        @Test
-        public void shouldSaveNewUser() {
-            final User savedUser = stubRepositoryToReturnUserOnSave();
-            final User user = new User();
-            final User returnedUser = userService.save(user);
-            // verify repository was called with user
-            verify(userRepository, times(1)).save(user);
-            assertEquals("Returned user should come from the repository", savedUser, returnedUser);
-        }
-    
-        private User stubRepositoryToReturnUserOnSave() {
-            User user = new User();
-            when(userRepository.save(any(User.class))).thenReturn(user);
-            return user;
-        }
-    
+```java
+@RunWith(MockitoJUnitRunner.class)
+public class UserServiceImplTest {
+
+    @Mock
+    private UserRepository userRepository;
+
+    private UserService userService;
+
+    @Before
+    public void setUp() {
+        userService = new UserServiceImpl(userRepository);
     }
-    
+
+    @Test
+    public void shouldSaveNewUser() {
+        final User savedUser = stubRepositoryToReturnUserOnSave();
+        final User user = new User();
+        final User returnedUser = userService.save(user);
+        // verify repository was called with user
+        verify(userRepository, times(1)).save(user);
+        assertEquals("Returned user should come from the repository", savedUser, returnedUser);
+    }
+
+    private User stubRepositoryToReturnUserOnSave() {
+        User user = new User();
+        when(userRepository.save(any(User.class))).thenReturn(user);
+        return user;
+    }
+
+}
+```
 
 The assumption is that the `UserService` will delegate actual storage to the `UserRepository`, which is mocked, and later stubbed to return a stored `User` object. Then I'm checking whether the object returned from `save()` is the stored one, and that `UserRepository` is called exactly once.
 
 As previously, at this point all we need is the interface for `UserRepository`, but thanks to Spring Data JPA it's also everything that we'll ever need for this project. The interface looks like this:
     
-    
-    public interface UserRepository extends JpaRepository<User, String> {
-    }
-    
+```java
+public interface UserRepository extends JpaRepository<User, String> {
+
+}
+```
 
 It just extends `JpaRepository` generic interface with `User` and `String` as type parameters. The former indicates that there will be `User` objects in this repository, latter that it's primary key will be of the `String` type. The `save()` method we need is already there inherited, among other basic CRUD methods.
 
@@ -342,49 +343,49 @@ We won't need to implement this interface, because that's how Spring Data JPA wo
 
 We need however to make the test to pass by implementing `UserService`:
     
-    
-    @Service
-    public class UserServiceImpl implements UserService {
-    
-        private final UserRepository repository;
-    
-        @Inject
-        public UserServiceImpl(final UserRepository repository) {
-            this.repository = repository;
-        }
-    
-        @Override
-        @Transactional
-        public User save(final User user) {
-            return repository.save(user);
-        }
-    
+```java
+@Service
+public class UserServiceImpl implements UserService {
+
+    private final UserRepository repository;
+
+    @Inject
+    public UserServiceImpl(final UserRepository repository) {
+        this.repository = repository;
     }
-    
+
+    @Override
+    @Transactional
+    public User save(final User user) {
+        return repository.save(user);
+    }
+
+}
+```
 
 It's a real simple implementation. Thing to notice is `@Transactional` annotation, that starts the transaction when the method is called as we are going to change the database by inserting a new `User`.
 
 Now the test should pass, but we are inserting `User` object into the database so it needs to be made a proper `@Entity`:
     
-    
-    @Entity
-    public class User {
-    
-        @Id
-        @Column(name = "id", nullable = false, updatable = false)
-        @NotNull
-        @Size(max = 64)
-        private String id;
-    
-        @Column(name = "password", nullable = false)
-        @NotNull
-        @Size(max = 64)
-        private String password;
-    
-        // getters
-    
-    }
-    
+```java
+@Entity
+public class User {
+
+    @Id
+    @Column(name = "id", nullable = false, updatable = false)
+    @NotNull
+    @Size(max = 64)
+    private String id;
+
+    @Column(name = "password", nullable = false)
+    @NotNull
+    @Size(max = 64)
+    private String password;
+
+    // getters
+
+}
+```    
 
 Notice the `@Entity`, `@Column`, and `@Id` annotations that appeared. The first one tells the object is a JPA entity. The second tells JPA how fields should be mapped to a column and what can be done with them - what the column name will be, whether it's allowed for a column to be updated or have null value. Whereas the `@Id` indicates a primary key for database record - it needs to be non null and unique, so our `User.id` fits here perfectly.
 
@@ -392,30 +393,30 @@ Notice the `@Entity`, `@Column`, and `@Id` annotations that appeared. The first 
 
 It's now possible to run and test the whole thing. Type:
     
-    
-    mvn spring-boot:run
-    
+```bash
+mvn spring-boot:run
+```
 
 And you should have the web service running on the default port from the current compiled sources.
 
 Alternatively you can build and run the package:
     
-    
-    mvn package
-    java -jar target/example-spring-boot-rest-1.0-SNAPSHOT.jar
-    
+```bash
+mvn package
+java -jar target/example-spring-boot-rest-1.0-SNAPSHOT.jar
+```
 
 Having done that now you can:
-    
-    
-    curl -X POST -d '{ "id": "test_id", "password": "test_password" }' http://localhost:8080/user
-    
+
+```bash
+curl -X POST -d '{ "id": "test_id", "password": "test_password" }' http://localhost:8080/user
+```
 
 And see whether the response from <http://localhost:8080/> will be like:
-    
-    
-    { "id": "test_id", "password": "test_password" }
-    
+
+```json
+{ "id": "test_id", "password": "test_password" }
+```    
 
 Which should be our inserted object.
 
@@ -425,40 +426,40 @@ Another requirement for our service is to prevent inserting users if another use
 
 Lets add a test case to the `UserServiceTest`:
     
-    
-    @Test
-    public void shouldSaveNewUser_GivenThereExistsOneWithTheSameId_ThenTheExceptionShouldBeThrown() throws Exception {
-        stubRepositoryToReturnExistingUser();
-        try {
-            userService.save(UserUtil.createUser());
-            fail("Expected exception");
-        } catch (UserAlreadyExistsException ignored) {
-        }
-        verify(userRepository, never()).save(any(User.class));
+```java
+@Test
+public void shouldSaveNewUser_GivenThereExistsOneWithTheSameId_ThenTheExceptionShouldBeThrown() throws Exception {
+    stubRepositoryToReturnExistingUser();
+    try {
+        userService.save(UserUtil.createUser());
+        fail("Expected exception");
+    } catch (UserAlreadyExistsException ignored) {
     }
-    
-    private void stubRepositoryToReturnExistingUser() {
-        final User user = UserUtil.createUser();
-        when(userRepository.findOne(user.getId())).thenReturn(user);
-    }
-    
+    verify(userRepository, never()).save(any(User.class));
+}
+
+private void stubRepositoryToReturnExistingUser() {
+    final User user = UserUtil.createUser();
+    when(userRepository.findOne(user.getId())).thenReturn(user);
+}
+```
 
 That assumes we will ask `UserRepository` about existing user with the same id by calling its `findOne()` method. If such user will be found, the `UserAlreadyExistsException` should be thrown, and the `save()` method on the repository should never be called.
 
 Now we need to change `save()` method in `UserService` implementation, that becomes:
     
-    
-    @Override
-    @Transactional
-    public User save(final User user) {
-        User existing = repository.findOne(user.getId());
-        if (existing != null) {
-            throw new UserAlreadyExistsException(
-                    String.format("There already exists a user with id=%s", user.getId()));
-        }
-        return repository.save(user);
+```java
+@Override
+@Transactional
+public User save(final User user) {
+    User existing = repository.findOne(user.getId());
+    if (existing != null) {
+        throw new UserAlreadyExistsException(
+                String.format("There already exists a user with id=%s", user.getId()));
     }
-    
+    return repository.save(user);
+}
+``` 
 
 It clearly has the logic the test requires. The `findOne(id)` method already exists in `UserRepository` and returns null if no object could be found.
 
@@ -466,13 +467,13 @@ The web service will be working fine after that, but once `UserAlreadyExistsExce
 
 Let's say it should be a response with CONFLICT status with a meaningful error message in the body. To do that we need to add `@ExceptionHandler` to the `UserController`:
     
-    
+```java
     @ExceptionHandler
     @ResponseStatus(HttpStatus.CONFLICT)
     public String handleUserAlreadyExistsException(UserAlreadyExistsException e) {
         return e.getMessage();
     }
-    
+```
 
 It's just a method that intercepts `UserAlreadyExistsException`, returns its message and sets the response status to CONFLICT.
 

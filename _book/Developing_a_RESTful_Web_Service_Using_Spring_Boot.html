@@ -1,0 +1,660 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Developing a RESTful Web Service Using Spring Boot | My Book</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.1.0">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="gitbook/style.css">
+    
+    
+
+        
+    
+    
+    
+    <link rel="prev" href="./using_microservices_to_build_cloud_native_applications__part_2.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book" data-level="2" data-basepath="." data-revision="Sun Jul 26 2015 18:30:42 GMT+0800 (CST)">
+    
+
+<div class="book-summary">
+    <div class="book-search">
+        <input type="text" placeholder="Type to search" class="form-control" />
+    </div>
+    <ul class="summary">
+        
+        
+        
+        
+
+        
+
+        
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="./index.html">
+                        <i class="fa fa-check"></i>
+                        
+                        Introduction
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" >
+            
+                
+                    <a target="_blank" href="http:/ryanjbaxter.com/2015/07/15/using-microservices-to-build-cloud-native-applications-part-1/">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        Using Microservices To Build Cloud Native Applications
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="using_microservices_to_build_cloud_native_applications__part_1.html">
+            
+                
+                    <a href="./using_microservices_to_build_cloud_native_applications__part_1.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        Using Microservices To Build Cloud Native Applications – Part 1
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="using_microservices_to_build_cloud_native_applications__part_2.html">
+            
+                
+                    <a href="./using_microservices_to_build_cloud_native_applications__part_2.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        Using Microservices To Build Cloud Native Applications – Part 2
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter active" data-level="2" data-path="Developing_a_RESTful_Web_Service_Using_Spring_Boot.html">
+            
+                
+                    <a href="./Developing_a_RESTful_Web_Service_Using_Spring_Boot.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        Developing a RESTful Web Service Using Spring Boot
+                    </a>
+                
+            
+            
+        </li>
+    
+
+
+        
+        <li class="divider"></li>
+        <li>
+            <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                Published with GitBook
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header">
+    <!-- Actions Left -->
+    <a href="#" class="btn pull-left toggle-summary" aria-label="Table of Contents"><i class="fa fa-align-justify"></i></a>
+    <a href="#" class="btn pull-left toggle-search" aria-label="Search"><i class="fa fa-search"></i></a>
+    
+    <div id="font-settings-wrapper" class="dropdown pull-left">
+        <a href="#" class="btn toggle-dropdown" aria-label="Font Settings"><i class="fa fa-font"></i>
+        </a>
+        <div class="dropdown-menu font-settings">
+    <div class="dropdown-caret">
+        <span class="caret-outer"></span>
+        <span class="caret-inner"></span>
+    </div>
+
+    <div class="buttons">
+        <button type="button" id="reduce-font-size" class="button size-2">A</button>
+        <button type="button" id="enlarge-font-size" class="button size-2">A</button>
+    </div>
+
+    <div class="buttons font-family-list">
+        <button type="button" data-font="0" class="button">Serif</button>
+        <button type="button" data-font="1" class="button">Sans</button>
+    </div>
+
+    <div class="buttons color-theme-list">
+        <button type="button" id="color-theme-preview-0" class="button size-3" data-theme="0">White</button>
+        <button type="button" id="color-theme-preview-1" class="button size-3" data-theme="1">Sepia</button>
+        <button type="button" id="color-theme-preview-2" class="button size-3" data-theme="2">Night</button>
+    </div>
+</div>
+
+    </div>
+
+    <!-- Actions Right -->
+    
+    <div class="dropdown pull-right">
+        <a href="#" class="btn toggle-dropdown" aria-label="Share"><i class="fa fa-share-alt"></i>
+        </a>
+        <div class="dropdown-menu font-settings dropdown-left">
+            <div class="dropdown-caret">
+                <span class="caret-outer"></span>
+                <span class="caret-inner"></span>
+            </div>
+            <div class="buttons">
+                <button type="button" data-sharing="twitter" class="button">
+                    Share on Twitter
+                </button>
+                <button type="button" data-sharing="google-plus" class="button">
+                    Share on Google
+                </button>
+                <button type="button" data-sharing="facebook" class="button">
+                    Share on Facebook
+                </button>
+                <button type="button" data-sharing="weibo" class="button">
+                    Share on Weibo
+                </button>
+                <button type="button" data-sharing="instapaper" class="button">
+                    Share on Instapaper
+                </button>
+            </div>
+        </div>
+    </div>
+    
+
+    
+    <a href="#" target="_blank" class="btn pull-right google-plus-sharing-link sharing-link" data-sharing="google-plus" aria-label="Google"><i class="fa fa-google-plus"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right facebook-sharing-link sharing-link" data-sharing="facebook" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right twitter-sharing-link sharing-link" data-sharing="twitter" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
+    
+    
+    
+
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="./" >My Book</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="-developing-a-restful-web-service-using-spring-boot-http-kielczewski-eu-2014-04-developing-restful-web-service-with-spring-boot"><a href="http://kielczewski.eu/2014/04/developing-restful-web-service-with-spring-boot/" target="_blank">Developing a RESTful Web Service Using Spring Boot</a></h1>
+<h1 id="%E4%BD%BF%E7%94%A8spring-boot%E5%BC%80%E5%8F%91restful-web%E6%9C%8D%E5%8A%A1">&#x4F7F;&#x7528;Spring Boot&#x5F00;&#x53D1;RESTful Web&#x670D;&#x52A1;</h1>
+<p>Tag: <a href="http://kielczewski.eu/tag/Spring/" target="_blank">Spring</a>, <a href="http://kielczewski.eu/tag/Spring%20Boot/" target="_blank">Spring Boot</a>, <a href="http://kielczewski.eu/tag/Spring%20MVC/" target="_blank">Spring MVC</a>, <a href="http://kielczewski.eu/tag/JPA/" target="_blank">JPA</a>, <a href="http://kielczewski.eu/tag/Spring%20Data%20JPA/" target="_blank">Spring Data JPA</a>, <a href="http://kielczewski.eu/tag/TDD/" target="_blank">TDD</a></p>
+<p>I&apos;m really impressed with <a href="http://projects.spring.io/spring-boot/" target="_blank">Spring Boot</a>. Its main goal is to take away most of this boilerplate configuration that was needed before and to replace it with some sensible defaults. One might say it&apos;s taking the control away from the developer and giving it to the army of fairies. That&apos;s probably right, but in this case the fairies are here to help, and moreover they can easily be cast away from doing particular thing. It&apos;s just a matter of doing it yourself as before, and thanks to <code>@ConditionalOn...</code> behaviour Spring Boot&apos;s auto configuration will not fire up.</p>
+<p>&#x6211;&#x5BF9;<a href="http://projects.spring.io/spring-boot/" target="_blank">Spring Boot</a>&#x7684;&#x5370;&#x8C61;&#x975E;&#x5E38;&#x6DF1;&#x523B;&#x3002;&#x5B83;&#x7684;&#x4E3B;&#x8981;&#x76EE;&#x7684;&#x5C31;&#x662F;&#x51CF;&#x5C11;&#x4EE5;&#x5F80;&#x9700;&#x8981;&#x7684;&#x5927;&#x90E8;&#x5206;&#x521D;&#x59CB;&#x914D;&#x7F6E;&#xFF0C;&#x4F7F;&#x7528;&#x4E00;&#x4E9B;&#x9ED8;&#x8BA4;&#x7684;&#x8BBE;&#x7F6E;&#x6765;&#x4EE3;&#x66FF;&#x3002;&#x53EF;&#x80FD;&#x6709;&#x4EBA;&#x4F1A;&#x8BF4;&#x8FD9;&#x5C06;&#x4F1A;&#x4F7F;&#x5F00;&#x53D1;&#x8005;&#x5931;&#x53BB;&#x63A7;&#x5236;&#xFF0C;&#x800C;&#x5C06;&#x63A7;&#x5236;&#x6743;&#x8BA9;&#x7ED9;&#x4E86;&#x9ED1;&#x6697;&#x9B54;&#x6CD5;&#x3002;&#x5F53;&#x7136;&#x8FD9;&#x4E5F;&#x8BB8;&#x5BF9;&#xFF0C;&#x4F46;&#x662F;&#x5728;&#x8FD9;&#x91CC;&#x4ED9;&#x5B50;&#x5374;&#x662F;&#x6765;&#x5E2E;&#x5FD9;&#x7684;&#xFF0C;&#x800C;&#x4E14;&#x4ED6;&#x4EEC;&#x4E5F;&#x53EF;&#x4EE5;&#x5F88;&#x5BB9;&#x6613;&#x4ECE;&#x7279;&#x6B8A;&#x7684;&#x4E8B;&#x60C5;&#x53BB;&#x9664;&#x3002;&#x5B83;&#x53EA;&#x662F;&#x50CF;&#x4EE5;&#x5F80;&#x4F60;&#x4EB2;&#x5386;&#x800C;&#x4E3A;&#x6240;&#x505A;&#x7684;&#x90A3;&#x6837;&#xFF0C;&#x7531;&#x4E8E;<code>@ConditionalOn...</code>&#x7684;&#x884C;&#x4E3A;&#xFF0C;Spring Boot&#x7684;&#x81EA;&#x52A8;&#x914D;&#x7F6E;&#x5C06;&#x4E0D;&#x4F1A;&#x53D1;&#x52A8;&#x3002;</p>
+<p>In the following article I will explore the way of employing Spring Boot to create a very basic, restful web service. As usual the source code can be found <a href="https://github.com/bkielczewski/example-spring-boot-rest" target="_blank">here on GitHub</a> to play around. </p>
+<p>&#x5728;&#x63A5;&#x4E0B;&#x6765;&#x7684;&#x6587;&#x7AE0;&#x91CC;&#xFF0C;&#x6211;&#x5C06;&#x4F1A;&#x63A2;&#x7D22;&#x4E00;&#x79CD;&#x91C7;&#x7528;Spring Boot&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x57FA;&#x672C;&#x7684;RESTful Web&#x670D;&#x52A1;&#x3002;&#x50CF;&#x5F80;&#x5E38;&#x4E00;&#x6837;&#xFF0C;&#x6E90;&#x4EE3;&#x7801;&#x5728;<a href="https://github.com/bkielczewski/example-spring-boot-rest" target="_blank">GitHub</a></p>
+<h2 id="service-overview">Service overview</h2>
+<p>The goal will be to create a simple web service with the following requirements:</p>
+<p>&#x76EE;&#x6807;&#x5C31;&#x662F;&#x6784;&#x5EFA;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;web&#x670D;&#x52A1;&#xFF0C;&#x6EE1;&#x8DB3;&#x4E00;&#x4E0B;&#x9700;&#x6C42;&#xFF1A;</p>
+<ul>
+<li>Given no user with same id exists, it should store a new user in the database and immediately return the stored object.<ul>
+<li>&#x7ED9;&#x4E00;&#x4E2A;&#x5177;&#x6709;ID&#x7684;&#x4E0D;&#x5B58;&#x5728;&#x7684;&#x7528;&#x6237;&#xFF0C;&#x8FD9;&#x5C06;&#x5728;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x5B58;&#x50A8;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x7528;&#x6237;&#xFF0C;&#x5E76;&#x7ACB;&#x5373;&#x8FD4;&#x56DE;&#x5B58;&#x50A8;&#x7684;&#x5BF9;&#x8C61;&#x3002;</li>
+</ul>
+</li>
+<li>Given there exists a user with same id, it should not store, but return error status with the message.<ul>
+<li>&#x7ED9;&#x4E00;&#x4E2A;&#x5177;&#x6709;ID&#x7684;&#x5DF2;&#x5B58;&#x5728;&#x7684;&#x7528;&#x6237;&#xFF0C;&#x5C06;&#x4E0D;&#x4F1A;&#x5B58;&#x50A8;&#xFF0C;&#x800C;&#x662F;&#x8FD4;&#x56DE;&#x9519;&#x8BEF;&#x7801;&#x4FE1;&#x606F;&#x3002;</li>
+</ul>
+</li>
+<li>Given there are previously stored users, it should be able to retrieve the list of them.<ul>
+<li>&#x7ED9;&#x5B9A;&#x5DF2;&#x5B58;&#x50A8;&#x7684;&#x7528;&#x6237;&#xFF0C;&#x5C06;&#x62FF;&#x5230;&#x7528;&#x6237;&#x7684;&#x5217;&#x8868;&#x3002;</li>
+</ul>
+</li>
+</ul>
+<h2 id="maven">Maven</h2>
+<p>Let&apos;s start with creating a <code>pom.xml</code>.</p>
+<p>&#x8BA9;&#x6211;&#x4EEC;&#x4ECE;&#x521B;&#x5EFA;<code>pom.xml</code>&#x5F00;&#x59CB;&#x3002;</p>
+<pre><code class="lang-xml"> <span class="hljs-tag">&lt;<span class="hljs-title">project</span> <span class="hljs-attribute">xmlns:xsi</span>=<span class="hljs-value">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> <span class="hljs-attribute">xmlns</span>=<span class="hljs-value">&quot;http://maven.apache.org/POM/4.0.0&quot;</span>
+          <span class="hljs-attribute">xsi:schemaLocation</span>=<span class="hljs-value">&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd&quot;</span>&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-title">modelVersion</span>&gt;</span>4.0.0<span class="hljs-tag">&lt;/<span class="hljs-title">modelVersion</span>&gt;</span>
+
+     <span class="hljs-tag">&lt;<span class="hljs-title">groupId</span>&gt;</span>eu.kielczewski.example.spring<span class="hljs-tag">&lt;/<span class="hljs-title">groupId</span>&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-title">artifactId</span>&gt;</span>example-spring-boot-rest<span class="hljs-tag">&lt;/<span class="hljs-title">artifactId</span>&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-title">version</span>&gt;</span>1.0-SNAPSHOT<span class="hljs-tag">&lt;/<span class="hljs-title">version</span>&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-title">packaging</span>&gt;</span>jar<span class="hljs-tag">&lt;/<span class="hljs-title">packaging</span>&gt;</span>
+
+     <span class="hljs-tag">&lt;<span class="hljs-title">parent</span>&gt;</span>
+         <span class="hljs-tag">&lt;<span class="hljs-title">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-title">groupId</span>&gt;</span>
+         <span class="hljs-tag">&lt;<span class="hljs-title">artifactId</span>&gt;</span>spring-boot-starter-parent<span class="hljs-tag">&lt;/<span class="hljs-title">artifactId</span>&gt;</span>
+         <span class="hljs-tag">&lt;<span class="hljs-title">version</span>&gt;</span>1.0.1.RELEASE<span class="hljs-tag">&lt;/<span class="hljs-title">version</span>&gt;</span>
+     <span class="hljs-tag">&lt;/<span class="hljs-title">parent</span>&gt;</span>
+
+     <span class="hljs-tag">&lt;<span class="hljs-title">name</span>&gt;</span>Example Spring Boot REST Service<span class="hljs-tag">&lt;/<span class="hljs-title">name</span>&gt;</span>
+
+     <span class="hljs-tag">&lt;<span class="hljs-title">properties</span>&gt;</span>
+         <span class="hljs-tag">&lt;<span class="hljs-title">java.version</span>&gt;</span>1.7<span class="hljs-tag">&lt;/<span class="hljs-title">java.version</span>&gt;</span>
+         <span class="hljs-tag">&lt;<span class="hljs-title">guava.version</span>&gt;</span>16.0.1<span class="hljs-tag">&lt;/<span class="hljs-title">guava.version</span>&gt;</span>
+         <span class="hljs-tag">&lt;<span class="hljs-title">project.build.sourceEncoding</span>&gt;</span>UTF-8<span class="hljs-tag">&lt;/<span class="hljs-title">project.build.sourceEncoding</span>&gt;</span>
+         <span class="hljs-tag">&lt;<span class="hljs-title">project.reporting.outputEncoding</span>&gt;</span>UTF-8<span class="hljs-tag">&lt;/<span class="hljs-title">project.reporting.outputEncoding</span>&gt;</span>
+     <span class="hljs-tag">&lt;/<span class="hljs-title">properties</span>&gt;</span>
+
+ <span class="hljs-tag">&lt;/<span class="hljs-title">project</span>&gt;</span>
+</code></pre>
+<p>The relevant thing here is <code>&lt;parent&gt;</code> tag - we will be inheriting from Spring Boot&apos;s parent POM. It&apos;s not absolutely necessary, however it provides a very useful thing which is the dependency management. It has already defined many artifacts we might find useful to use, together with their recent versions supported by Spring, so it really saves up the hassle of tracking them down yourself. We just need to override <code>java.version</code> property, which defaults to 1.6, and add version property for <a href="https://code.google.com/p/guava-libraries/" target="_blank">Guava</a>, which is a nice thing to have in handy - but both of these are a matter of personal preference.</p>
+<p>&#x9700;&#x8981;&#x5173;&#x6CE8;&#x7684;&#x5C31;&#x662F;<code>&lt;parent&gt;</code>&#x6807;&#x7B7E;&#x2014;&#x2014;&#x2014;&#x2014;&#x6211;&#x4EEC;&#x5C06;&#x4F1A;&#x4ECE;Spring Boot&#x7684;&#x7236;POM&#x7EE7;&#x627F;&#x800C;&#x6765;&#x3002;&#x8FD9;&#x5F53;&#x7136;&#x4E0D;&#x662F;&#x5FC5;&#x987B;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x8FD9;&#x6709;&#x4E00;&#x4E2A;&#x975E;&#x5E38;&#x6709;&#x7528;&#x7684;&#x597D;&#x5904;&#x5C31;&#x662F;&#x4F9D;&#x8D56;&#x7BA1;&#x7406;&#x3002;&#x5B83;&#x5DF2;&#x7ECF;&#x5B9A;&#x4E49;&#x4E86;&#x5F88;&#x591A;&#x6211;&#x4EEC;&#x53EF;&#x80FD;&#x4F1A;&#x7528;&#x5230;&#x7684;&#x6709;&#x7528;&#x7684;&#x4E1C;&#x897F;&#xFF0C;&#x53EF;&#x4EE5;&#x88AB;Spring&#x6240;&#x652F;&#x6301;&#x7684;&#x6700;&#x65B0;&#x7248;&#x672C;&#xFF0C;&#x6240;&#x4EE5;&#x771F;&#x7684;&#x89E3;&#x51B3;&#x4E86;&#x5F88;&#x591A;&#x9700;&#x8981;&#x81EA;&#x5DF1;&#x641C;&#x5BFB;&#x7684;&#x9EBB;&#x70E6;&#x4E8B;&#x3002;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x91CD;&#x5199;<code>java.version</code>&#x5C5E;&#x6027;&#xFF0C;&#x9ED8;&#x8BA4;&#x662F;1.6&#xFF0C;&#x6DFB;&#x52A0;<a href="https://code.google.com/p/guava-libraries/" target="_blank">Guava</a>&#x7248;&#x672C;&#x4FE1;&#x606F;&#xFF0C;&#x8FD9;&#x90FD;&#x662F;&#x975E;&#x5E38;&#x597D;&#x7528;&#x7684;&#x4E1C;&#x897F;&#x3002;&#x2014;&#x2014;&#x2014;&#x2014;&#x4F46;&#x8FD9;&#x90FD;&#x5C5E;&#x4E8E;&#x4E2A;&#x4EBA;&#x559C;&#x597D;&#x3002;</p>
+<p>Next thing to do will be to specify the dependencies, which will decide upon the technology stack we will be using:</p>
+<p>&#x4E0B;&#x4E00;&#x4EF6;&#x4E8B;&#x5C31;&#x662F;&#x6307;&#x5B9A;&#x6211;&#x4EEC;&#x5C06;&#x4F1A;&#x7528;&#x5230;&#x7684;&#x6280;&#x672F;&#x6808;&#x4F9D;&#x8D56;&#xFF1A;</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">dependencies</span>&gt;</span>
+
+    <span class="hljs-comment">&lt;!-- Spring Boot --&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-title">dependency</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-title">groupId</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">artifactId</span>&gt;</span>spring-boot-starter<span class="hljs-tag">&lt;/<span class="hljs-title">artifactId</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">dependency</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-title">dependency</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-title">groupId</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">artifactId</span>&gt;</span>spring-boot-starter-test<span class="hljs-tag">&lt;/<span class="hljs-title">artifactId</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">scope</span>&gt;</span>test<span class="hljs-tag">&lt;/<span class="hljs-title">scope</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">dependency</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-title">dependency</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-title">groupId</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">artifactId</span>&gt;</span>spring-boot-starter-web<span class="hljs-tag">&lt;/<span class="hljs-title">artifactId</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">dependency</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-title">dependency</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-title">groupId</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">artifactId</span>&gt;</span>spring-boot-starter-data-jpa<span class="hljs-tag">&lt;/<span class="hljs-title">artifactId</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">dependency</span>&gt;</span>
+
+    <span class="hljs-comment">&lt;!-- Hibernate validator --&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-title">dependency</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">groupId</span>&gt;</span>org.hibernate<span class="hljs-tag">&lt;/<span class="hljs-title">groupId</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">artifactId</span>&gt;</span>hibernate-validator<span class="hljs-tag">&lt;/<span class="hljs-title">artifactId</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">dependency</span>&gt;</span>
+
+    <span class="hljs-comment">&lt;!-- HSQLDB --&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-title">dependency</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">groupId</span>&gt;</span>org.hsqldb<span class="hljs-tag">&lt;/<span class="hljs-title">groupId</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">artifactId</span>&gt;</span>hsqldb<span class="hljs-tag">&lt;/<span class="hljs-title">artifactId</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">scope</span>&gt;</span>runtime<span class="hljs-tag">&lt;/<span class="hljs-title">scope</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">dependency</span>&gt;</span>
+
+    <span class="hljs-comment">&lt;!-- Guava --&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-title">dependency</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">groupId</span>&gt;</span>com.google.guava<span class="hljs-tag">&lt;/<span class="hljs-title">groupId</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">artifactId</span>&gt;</span>guava<span class="hljs-tag">&lt;/<span class="hljs-title">artifactId</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">version</span>&gt;</span>${guava.version}<span class="hljs-tag">&lt;/<span class="hljs-title">version</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">dependency</span>&gt;</span>
+
+    <span class="hljs-comment">&lt;!-- Java EE --&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-title">dependency</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">groupId</span>&gt;</span>javax.inject<span class="hljs-tag">&lt;/<span class="hljs-title">groupId</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">artifactId</span>&gt;</span>javax.inject<span class="hljs-tag">&lt;/<span class="hljs-title">artifactId</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">version</span>&gt;</span>1<span class="hljs-tag">&lt;/<span class="hljs-title">version</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">dependency</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-title">dependencies</span>&gt;</span>
+</code></pre>
+<p>When it comes to Spring Boot its functions are spread between the starter modules. The <code>spring-boot-starter</code> is the main one, followed by <code>spring-boot-starter-test</code> which pulls some nice tools for unit testing including JUnit4 and Mockito. Next comes <code>spring-boot-starter-web</code> that pulls Spring MVC dependencies, but also Jackson which will be used for JSON, and most importantly Tomcat, which act as embedded Servlet container. Finally <code>spring-boot-starter-data-jpa</code> which is responsible for setting up Spring Data JPA, and comes bundled with Hibernate.</p>
+<p>Additional dependencies include Hibernate Validator, as we will be doing some validation. HSQLDB will be the database engine, chosen here because it can be easily embedded and has in memory database feature which is handy for tutorial purposes. Notice I haven&apos;t specified versions for these - they are managed by <code>spring-boot-starter-parent</code>.</p>
+<p>The rest is something of my personal preference - Guava, because it&apos;s cool ;) and JSR-330 API to replace <code>@Autowired</code> annotation with <code>@Inject</code>, which I like better.</p>
+<p>Last thing that&apos;s left is to add Spring Boot Maven Plugin:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">build</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">plugins</span>&gt;</span>
+
+        <span class="hljs-comment">&lt;!-- Spring Boot Maven --&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-title">plugin</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-title">groupId</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="hljs-tag">&lt;/<span class="hljs-title">artifactId</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">plugin</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;/<span class="hljs-title">plugins</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">build</span>&gt;</span>
+</code></pre>
+<p>This plugin does two things:</p>
+<ul>
+<li>It provides spring-boot:run goal for Maven, so the application can be easily run without packaging.</li>
+<li>It hooks into <code>package</code> goal to produce executable JAR file with all the dependencies included, similar to maven-shade-plugin, but in less messy way.</li>
+</ul>
+<h2 id="writing-the-main-method">Writing the main() method</h2>
+<p>The execution will start by firing up the main() method, so let&apos;s write a class to hold it:</p>
+<pre><code class="lang-java"><span class="hljs-annotation">@Configuration</span>
+<span class="hljs-annotation">@EnableAutoConfiguration</span>
+<span class="hljs-annotation">@ComponentScan</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Application</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">SpringBootServletInitializer</span> </span>{
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">final</span> String[] args)</span> </span>{
+        SpringApplication.run(Application.class, args);
+    }
+
+    <span class="hljs-annotation">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">final</span> SpringApplicationBuilder <span class="hljs-title">configure</span><span class="hljs-params">(<span class="hljs-keyword">final</span> SpringApplicationBuilder application)</span> </span>{
+        <span class="hljs-keyword">return</span> application.sources(Application.class);
+    }
+}
+</code></pre>
+<p>This class has the following features:</p>
+<ul>
+<li>It acts as a <code>@Configuration</code> class for Spring.</li>
+<li>As such it has <code>@ComponentScan</code> annotation that enables scanning for another Spring components in current package and its subpackages.</li>
+<li>Another annotation is <code>@EnableAutoConfiguration</code> which tells Spring Boot to run autoconfiguration.</li>
+<li>It also extends <code>SpringBootServletInitializer</code> which will configure Spring servlet for us, and overrides the <code>configure()</code> method to point to itself, so Spring can find the main configuration.</li>
+<li>Finally, the <code>main()</code> method consists of single static call to <code>SpringApplication.run()</code>.</li>
+</ul>
+<p>At this point this is all that is required to configure the application, so we can start implementing.</p>
+<h2 id="adding-usercontroller">Adding UserController</h2>
+<p>Let&apos;s start with writing a test case for creating a new user through the UserController.</p>
+<pre><code class="lang-java"><span class="hljs-annotation">@RunWith</span>(MockitoJUnitRunner.class)
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserControllerTest</span> </span>{
+
+    <span class="hljs-annotation">@Mock</span>
+    <span class="hljs-keyword">private</span> UserService userService;
+
+    <span class="hljs-keyword">private</span> UserController userController;
+
+    <span class="hljs-annotation">@Before</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setUp</span><span class="hljs-params">()</span> </span>{
+        userController = <span class="hljs-keyword">new</span> UserController(userService);
+    }
+
+    <span class="hljs-annotation">@Test</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">shouldCreateUser</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Exception </span>{
+        <span class="hljs-keyword">final</span> User savedUser = stubServiceToReturnStoredUser();
+        <span class="hljs-keyword">final</span> User user = <span class="hljs-keyword">new</span> User();
+        User returnedUser = userController.createUser(user);
+        <span class="hljs-comment">// verify user was passed to UserService</span>
+        verify(userService, times(<span class="hljs-number">1</span>)).save(user);
+        assertEquals(<span class="hljs-string">&quot;Returned user should come from the service&quot;</span>, savedUser, returnedUser);
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">private</span> User <span class="hljs-title">stubServiceToReturnStoredUser</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">final</span> User user = <span class="hljs-keyword">new</span> User();
+        when(userService.save(any(User.class))).thenReturn(user);
+        <span class="hljs-keyword">return</span> user;
+    }
+
+}
+</code></pre>
+<p>From this test case we see that in order to create a new user, we need to have <code>UserController</code> with <code>createUser()</code> method, that takes the <code>User</code> object and passes it to the <code>UserService</code>, that will be responsible for doing the actual work.</p>
+<p>Both <code>MockitoJUnitRunner.class</code> and <code>@Mock</code> annotation come from Mockito and their purpose is to inject mocked object instead of real implementation of UserService interface. Thanks to this, without the need for a real implementation of <code>UserService</code>, I can simulate returning a stored <code>User</code> object that comes from the service and verify that it will be exactly the object the <code>UserController</code> is going to return. I also check that the <code>UserService</code> is going to be called exactly once.</p>
+<p>From the REST point of view it will hook up to the POST http method of the <code>/user</code> resource.</p>
+<p>So let&apos;s implement it:</p>
+<pre><code class="lang-java"><span class="hljs-annotation">@RestController</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserController</span> </span>{
+
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> UserService userService;
+
+    <span class="hljs-annotation">@Inject</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">UserController</span><span class="hljs-params">(<span class="hljs-keyword">final</span> UserService userService)</span> </span>{
+        <span class="hljs-keyword">this</span>.userService = userService;
+    }
+
+    <span class="hljs-annotation">@RequestMapping</span>(value = <span class="hljs-string">&quot;/user&quot;</span>, method = RequestMethod.POST)
+    <span class="hljs-function"><span class="hljs-keyword">public</span> User <span class="hljs-title">createUser</span><span class="hljs-params">(@RequestBody @Valid <span class="hljs-keyword">final</span> User user)</span> </span>{
+        <span class="hljs-keyword">return</span> userService.save(user);
+    }
+
+}
+</code></pre>
+<p>Points to notice:</p>
+<ul>
+<li>It&apos;s annotated with <code>@RestController</code>. The difference between this and <code>@Controller</code> annotation is the former also implies <code>@ResponseBody</code> on every method, which means there is less to write since from a RESTful web service we are returning JSON objects anyway.</li>
+<li><code>@RequestMapping</code> maps the <code>createUser()</code> to the POST request on the <code>/user</code> url.</li>
+<li>Method takes the <code>User</code> object as a parameter. It is created from the body of the request thanks to <code>@RequestBody</code> annotation. It is then validated, which is enforced by <code>@Valid</code>.</li>
+<li>The <code>UserService</code> will be injected to the constructor, and <code>User</code> object is passed to its <code>save()</code> method for storage.</li>
+<li>After storing, the stored <code>User</code> object will be returned. Spring will convert it back to JSON automatically, even without <code>@ResponseBody</code> annotation which is default for <code>@RestController</code>.</li>
+</ul>
+<p>How about UserService and User then? For the test to pass we need only an interface for UserService, because it is not even created, but merely mocked. It should take <code>User</code> objects into the <code>save()</code> methods which will be used to save them, then it should return saved <code>User</code> object back to the caller.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">UserService</span> </span>{
+
+    <span class="hljs-function">User <span class="hljs-title">save</span><span class="hljs-params">(User user)</span></span>;
+
+}
+</code></pre>
+<p>As for <code>User</code> object it can be anything at this stage, for example:</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span> </span>{
+
+    <span class="hljs-annotation">@NotNull</span>
+    <span class="hljs-annotation">@Size</span>(max = <span class="hljs-number">64</span>)
+    <span class="hljs-keyword">private</span> String id;
+
+    <span class="hljs-annotation">@NotNull</span>
+    <span class="hljs-annotation">@Size</span>(max = <span class="hljs-number">64</span>)
+    <span class="hljs-keyword">private</span> String password;
+
+    <span class="hljs-comment">// getters</span>
+
+}
+</code></pre>
+<p>Where <code>@NotNull</code> and <code>@Size</code> are validation constraints the object will be checked against while being deserialized from the request body.</p>
+<h2 id="adding-userservice">Adding UserService</h2>
+<p>Having an interface for <code>UserService</code> it would be useful to have an implementation of this <code>save()</code> method to do the work for us. Let&apos;s start with the test case to see how it might work:</p>
+<pre><code class="lang-java"><span class="hljs-annotation">@RunWith</span>(MockitoJUnitRunner.class)
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserServiceImplTest</span> </span>{
+
+    <span class="hljs-annotation">@Mock</span>
+    <span class="hljs-keyword">private</span> UserRepository userRepository;
+
+    <span class="hljs-keyword">private</span> UserService userService;
+
+    <span class="hljs-annotation">@Before</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setUp</span><span class="hljs-params">()</span> </span>{
+        userService = <span class="hljs-keyword">new</span> UserServiceImpl(userRepository);
+    }
+
+    <span class="hljs-annotation">@Test</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">shouldSaveNewUser</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">final</span> User savedUser = stubRepositoryToReturnUserOnSave();
+        <span class="hljs-keyword">final</span> User user = <span class="hljs-keyword">new</span> User();
+        <span class="hljs-keyword">final</span> User returnedUser = userService.save(user);
+        <span class="hljs-comment">// verify repository was called with user</span>
+        verify(userRepository, times(<span class="hljs-number">1</span>)).save(user);
+        assertEquals(<span class="hljs-string">&quot;Returned user should come from the repository&quot;</span>, savedUser, returnedUser);
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">private</span> User <span class="hljs-title">stubRepositoryToReturnUserOnSave</span><span class="hljs-params">()</span> </span>{
+        User user = <span class="hljs-keyword">new</span> User();
+        when(userRepository.save(any(User.class))).thenReturn(user);
+        <span class="hljs-keyword">return</span> user;
+    }
+
+}
+</code></pre>
+<p>The assumption is that the <code>UserService</code> will delegate actual storage to the <code>UserRepository</code>, which is mocked, and later stubbed to return a stored <code>User</code> object. Then I&apos;m checking whether the object returned from <code>save()</code> is the stored one, and that <code>UserRepository</code> is called exactly once.</p>
+<p>As previously, at this point all we need is the interface for <code>UserRepository</code>, but thanks to Spring Data JPA it&apos;s also everything that we&apos;ll ever need for this project. The interface looks like this:</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">UserRepository</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">JpaRepository</span>&lt;<span class="hljs-title">User</span>, <span class="hljs-title">String</span>&gt; </span>{
+
+}
+</code></pre>
+<p>It just extends <code>JpaRepository</code> generic interface with <code>User</code> and <code>String</code> as type parameters. The former indicates that there will be <code>User</code> objects in this repository, latter that it&apos;s primary key will be of the <code>String</code> type. The <code>save()</code> method we need is already there inherited, among other basic CRUD methods.</p>
+<p>We won&apos;t need to implement this interface, because that&apos;s how Spring Data JPA works - it generates the implementation for us.</p>
+<p>We need however to make the test to pass by implementing <code>UserService</code>:</p>
+<pre><code class="lang-java"><span class="hljs-annotation">@Service</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserServiceImpl</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">UserService</span> </span>{
+
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> UserRepository repository;
+
+    <span class="hljs-annotation">@Inject</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">UserServiceImpl</span><span class="hljs-params">(<span class="hljs-keyword">final</span> UserRepository repository)</span> </span>{
+        <span class="hljs-keyword">this</span>.repository = repository;
+    }
+
+    <span class="hljs-annotation">@Override</span>
+    <span class="hljs-annotation">@Transactional</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> User <span class="hljs-title">save</span><span class="hljs-params">(<span class="hljs-keyword">final</span> User user)</span> </span>{
+        <span class="hljs-keyword">return</span> repository.save(user);
+    }
+
+}
+</code></pre>
+<p>It&apos;s a real simple implementation. Thing to notice is <code>@Transactional</code> annotation, that starts the transaction when the method is called as we are going to change the database by inserting a new <code>User</code>.</p>
+<p>Now the test should pass, but we are inserting <code>User</code> object into the database so it needs to be made a proper <code>@Entity</code>:</p>
+<pre><code class="lang-java"><span class="hljs-annotation">@Entity</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span> </span>{
+
+    <span class="hljs-annotation">@Id</span>
+    <span class="hljs-annotation">@Column</span>(name = <span class="hljs-string">&quot;id&quot;</span>, nullable = <span class="hljs-keyword">false</span>, updatable = <span class="hljs-keyword">false</span>)
+    <span class="hljs-annotation">@NotNull</span>
+    <span class="hljs-annotation">@Size</span>(max = <span class="hljs-number">64</span>)
+    <span class="hljs-keyword">private</span> String id;
+
+    <span class="hljs-annotation">@Column</span>(name = <span class="hljs-string">&quot;password&quot;</span>, nullable = <span class="hljs-keyword">false</span>)
+    <span class="hljs-annotation">@NotNull</span>
+    <span class="hljs-annotation">@Size</span>(max = <span class="hljs-number">64</span>)
+    <span class="hljs-keyword">private</span> String password;
+
+    <span class="hljs-comment">// getters</span>
+
+}
+</code></pre>
+<p>Notice the <code>@Entity</code>, <code>@Column</code>, and <code>@Id</code> annotations that appeared. The first one tells the object is a JPA entity. The second tells JPA how fields should be mapped to a column and what can be done with them - what the column name will be, whether it&apos;s allowed for a column to be updated or have null value. Whereas the <code>@Id</code> indicates a primary key for database record - it needs to be non null and unique, so our <code>User.id</code> fits here perfectly.</p>
+<h2 id="getting-this-to-work">Getting this to work</h2>
+<p>It&apos;s now possible to run and test the whole thing. Type:</p>
+<pre><code class="lang-bash">mvn spring-boot:run
+</code></pre>
+<p>And you should have the web service running on the default port from the current compiled sources.</p>
+<p>Alternatively you can build and run the package:</p>
+<pre><code class="lang-bash">mvn package
+java -jar target/example-spring-boot-rest-<span class="hljs-number">1.0</span>-SNAPSHOT.jar
+</code></pre>
+<p>Having done that now you can:</p>
+<pre><code class="lang-bash">curl -X POST <span class="hljs-operator">-d</span> <span class="hljs-string">&apos;{ &quot;id&quot;: &quot;test_id&quot;, &quot;password&quot;: &quot;test_password&quot; }&apos;</span> http://localhost:<span class="hljs-number">8080</span>/user
+</code></pre>
+<p>And see whether the response from <a href="http://localhost:8080/" target="_blank">http://localhost:8080/</a> will be like:</p>
+<pre><code class="lang-json">{ <span class="hljs-string">&quot;id&quot;</span>: <span class="hljs-string">&quot;test_id&quot;</span>, <span class="hljs-string">&quot;password&quot;</span>: <span class="hljs-string">&quot;test_password&quot;</span> }
+</code></pre>
+<p>Which should be our inserted object.</p>
+<h2 id="checking-for-duplicate-users">Checking for duplicate Users</h2>
+<p>Another requirement for our service is to prevent inserting users if another user already exists with the same id.</p>
+<p>Lets add a test case to the <code>UserServiceTest</code>:</p>
+<pre><code class="lang-java"><span class="hljs-annotation">@Test</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">shouldSaveNewUser_GivenThereExistsOneWithTheSameId_ThenTheExceptionShouldBeThrown</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Exception </span>{
+    stubRepositoryToReturnExistingUser();
+    <span class="hljs-keyword">try</span> {
+        userService.save(UserUtil.createUser());
+        fail(<span class="hljs-string">&quot;Expected exception&quot;</span>);
+    } <span class="hljs-keyword">catch</span> (UserAlreadyExistsException ignored) {
+    }
+    verify(userRepository, never()).save(any(User.class));
+}
+
+<span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">stubRepositoryToReturnExistingUser</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">final</span> User user = UserUtil.createUser();
+    when(userRepository.findOne(user.getId())).thenReturn(user);
+}
+</code></pre>
+<p>That assumes we will ask <code>UserRepository</code> about existing user with the same id by calling its <code>findOne()</code> method. If such user will be found, the <code>UserAlreadyExistsException</code> should be thrown, and the <code>save()</code> method on the repository should never be called.</p>
+<p>Now we need to change <code>save()</code> method in <code>UserService</code> implementation, that becomes:</p>
+<pre><code class="lang-java"><span class="hljs-annotation">@Override</span>
+<span class="hljs-annotation">@Transactional</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> User <span class="hljs-title">save</span><span class="hljs-params">(<span class="hljs-keyword">final</span> User user)</span> </span>{
+    User existing = repository.findOne(user.getId());
+    <span class="hljs-keyword">if</span> (existing != <span class="hljs-keyword">null</span>) {
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> UserAlreadyExistsException(
+                String.format(<span class="hljs-string">&quot;There already exists a user with id=%s&quot;</span>, user.getId()));
+    }
+    <span class="hljs-keyword">return</span> repository.save(user);
+}
+</code></pre>
+<p>It clearly has the logic the test requires. The <code>findOne(id)</code> method already exists in <code>UserRepository</code> and returns null if no object could be found.</p>
+<p>The web service will be working fine after that, but once <code>UserAlreadyExistsException</code> will be thrown, it will cause INTERNAL SERVER ERROR response for the client using it. We should make sure the response will be different, so the client can more clearly see the situation occurred.</p>
+<p>Let&apos;s say it should be a response with CONFLICT status with a meaningful error message in the body. To do that we need to add <code>@ExceptionHandler</code> to the <code>UserController</code>:</p>
+<pre><code class="lang-java">    <span class="hljs-annotation">@ExceptionHandler</span>
+    <span class="hljs-annotation">@ResponseStatus</span>(HttpStatus.CONFLICT)
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">handleUserAlreadyExistsException</span><span class="hljs-params">(UserAlreadyExistsException e)</span> </span>{
+        <span class="hljs-keyword">return</span> e.getMessage();
+    }
+</code></pre>
+<p>It&apos;s just a method that intercepts <code>UserAlreadyExistsException</code>, returns its message and sets the response status to CONFLICT.</p>
+<h2 id="closing-remarks">Closing remarks</h2>
+<p>I hope that was helpful to get a grasp on what it takes to do a simple web service the Spring Boot way. The implementation of the third requirement about returning all stored users could be a way to spend an evening instead of doing all the things normal people usually do on evenings. If not, take a peek at the <a href="https://github.com/bkielczewski/example-spring-boot-rest" target="_blank">source code</a> I have prepared sacrificing mine for you.</p>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="./using_microservices_to_build_cloud_native_applications__part_2.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Using Microservices To Build Cloud Native Applications – Part 2"><i class="fa fa-angle-left"></i></a>
+        
+        
+    </div>
+</div>
+
+        
+<script src="gitbook/app.js"></script>
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"fontSettings":{"theme":null,"family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>
