@@ -4,7 +4,7 @@
 
 In my [previous post](http://ryanjbaxter.com/2015/07/13/building-cloud-native-applications/) I described at a high level what it means to build a cloud native application and hopefully gave you an idea of why building applications in the cloud can be different than you may be used to. One thing many cloud native applications have in common is that they are often built using a microservices architecture. But before we talk about microservices lets talk about the types of applications most people are familiar with building today.
 
-在我的[上一篇文章](http://ryanjbaxter.com/2015/07/13/building-cloud-native-applications/)中是形而上得描述了云端原生应用的构建，期望启发你思考为何在云上构建应用的方式和以往不同。通常情况下，云端原生应用的一个共同点就是使用微服务架构进行构建。但是在我们谈论微服务之前，让我们回顾一下目前人们所熟知的集中应用程序类型。
+在[上一篇文章](http://ryanjbaxter.com/2015/07/13/building-cloud-native-applications/)中，我从更高层面上描述了云端原生应用的构建，期望启发你思考为何在云上构建应用的方式和以往不同。通常情况下，云端原生应用的一个共同点就是使用微服务架构进行构建。但是在我们谈论微服务之前，让我们回顾一下目前人们所熟知的集中应用程序类型。
 
 Most applications people build today are 3-tier, monolithic applications. What do I mean by monolithic? Basically the entire application is deployed as a single entity. In Java terms this might mean when you deploy your application, you deploy the entire thing in a single WAR or JAR file. The fact that the application is monolithic is not a bad thing, but at some point most applications reach a certain size and gain a certain amount of complexity where the monolith is too hard to understand and is starting to hinder the productivity of the team. At this point the monolith is no longer suited for the cloud (or on premise) and something needs to change.
 
