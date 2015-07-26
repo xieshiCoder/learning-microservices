@@ -1,0 +1,261 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Using Microservices To Build Cloud Native Applications – Part 2 | My Book</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.1.0">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="gitbook/style.css">
+    
+    
+
+        
+    
+    
+    
+    <link rel="prev" href="./using_microservices_to_build_cloud_native_applications__part_1.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book" data-level="0.2" data-basepath="." data-revision="Sun Jul 26 2015 16:24:42 GMT+0800 (CST)">
+    
+
+<div class="book-summary">
+    <div class="book-search">
+        <input type="text" placeholder="Type to search" class="form-control" />
+    </div>
+    <ul class="summary">
+        
+        
+        
+        
+
+        
+
+        
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="./index.html">
+                        <i class="fa fa-check"></i>
+                        
+                        Introduction
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="0.1" data-path="using_microservices_to_build_cloud_native_applications__part_1.html">
+            
+                
+                    <a href="./using_microservices_to_build_cloud_native_applications__part_1.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>0.1.</b>
+                        
+                        Using Microservices To Build Cloud Native Applications – Part 1
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="0.2" data-path="using_microservices_to_build_cloud_native_applications__part_2.html">
+            
+                
+                    <a href="./using_microservices_to_build_cloud_native_applications__part_2.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>0.2.</b>
+                        
+                        Using Microservices To Build Cloud Native Applications – Part 2
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+        
+        <li class="divider"></li>
+        <li>
+            <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                Published with GitBook
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header">
+    <!-- Actions Left -->
+    <a href="#" class="btn pull-left toggle-summary" aria-label="Table of Contents"><i class="fa fa-align-justify"></i></a>
+    <a href="#" class="btn pull-left toggle-search" aria-label="Search"><i class="fa fa-search"></i></a>
+    
+    <div id="font-settings-wrapper" class="dropdown pull-left">
+        <a href="#" class="btn toggle-dropdown" aria-label="Font Settings"><i class="fa fa-font"></i>
+        </a>
+        <div class="dropdown-menu font-settings">
+    <div class="dropdown-caret">
+        <span class="caret-outer"></span>
+        <span class="caret-inner"></span>
+    </div>
+
+    <div class="buttons">
+        <button type="button" id="reduce-font-size" class="button size-2">A</button>
+        <button type="button" id="enlarge-font-size" class="button size-2">A</button>
+    </div>
+
+    <div class="buttons font-family-list">
+        <button type="button" data-font="0" class="button">Serif</button>
+        <button type="button" data-font="1" class="button">Sans</button>
+    </div>
+
+    <div class="buttons color-theme-list">
+        <button type="button" id="color-theme-preview-0" class="button size-3" data-theme="0">White</button>
+        <button type="button" id="color-theme-preview-1" class="button size-3" data-theme="1">Sepia</button>
+        <button type="button" id="color-theme-preview-2" class="button size-3" data-theme="2">Night</button>
+    </div>
+</div>
+
+    </div>
+
+    <!-- Actions Right -->
+    
+    <div class="dropdown pull-right">
+        <a href="#" class="btn toggle-dropdown" aria-label="Share"><i class="fa fa-share-alt"></i>
+        </a>
+        <div class="dropdown-menu font-settings dropdown-left">
+            <div class="dropdown-caret">
+                <span class="caret-outer"></span>
+                <span class="caret-inner"></span>
+            </div>
+            <div class="buttons">
+                <button type="button" data-sharing="twitter" class="button">
+                    Share on Twitter
+                </button>
+                <button type="button" data-sharing="google-plus" class="button">
+                    Share on Google
+                </button>
+                <button type="button" data-sharing="facebook" class="button">
+                    Share on Facebook
+                </button>
+                <button type="button" data-sharing="weibo" class="button">
+                    Share on Weibo
+                </button>
+                <button type="button" data-sharing="instapaper" class="button">
+                    Share on Instapaper
+                </button>
+            </div>
+        </div>
+    </div>
+    
+
+    
+    <a href="#" target="_blank" class="btn pull-right google-plus-sharing-link sharing-link" data-sharing="google-plus" aria-label="Google"><i class="fa fa-google-plus"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right facebook-sharing-link sharing-link" data-sharing="facebook" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right twitter-sharing-link sharing-link" data-sharing="twitter" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
+    
+    
+    
+
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="./" >My Book</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <hr>
+<p>title: Using Microservices To Build Cloud Native Applications &#x2013; Part 2
+tags: []</p>
+<h2 id="notebook-0-0-inbox">notebook: 0.0 Inbox</h2>
+<p>Using Microservices To Build Cloud Native Applications &#x2013; Part 2</p>
+<p>In <a href="http://ryanjbaxter.com/2015/07/15/using-microservices-to-build-cloud-native-applications-part-1/" target="_blank">part 1</a> of this 2 part post, I described what microservices are and how I have gone about transitioning a 3-tier monolithic application to use a microservices architecture. If you have not read <a href="http://ryanjbaxter.com/2015/07/15/using-microservices-to-build-cloud-native-applications-part-1/" target="_blank">part 1</a>, I suggest you head back and read that now. Also, if you have not read <a href="http://ryanjbaxter.com/2015/07/13/building-cloud-native-applications/" target="_blank">my post on building cloud native applications</a> I suggest you check that out as well to better understand the bigger picture of why microservices are important when building cloud applications.</p>
+<p>At the end of part 1 we left off with an application that had been broken apart into several microservices all working together to produce the overall experience for the end user. The architecture looked like this</p>
+<p>While this architecture was much more suited for the cloud than our original monolithic architecture, I mentioned that there was still some problems we needed to address.</p>
+<p>The first problem has to do with fragility, and as I mentioned in <a href="http://ryanjbaxter.com/2015/07/13/building-cloud-native-applications/" target="_blank">my post about building cloud native applications</a>, fragility is the enemy. Where is the fragility in this architecture? Well it is actually between the client side code and the services. As it stands right now, our client side code has a hard dependency on all the services. Here is a good example as to why this is bad. It is very common in microservice applications for the services to evolve. Typically this involves one microservice growing too large and needing to be split up into two or more new services, but it also might involve a service being completely removed. When something like this occurs (an it is bound to happen at some point in our application&#x2019;s lifetime) our client side code is suddenly broken because it is communicating directly with that evolving service.</p>
+<p>A more subtle problem has to do with the type of client communicating with the services. Take, for example, a desktop and a mobile phone. The two clients are very different, especially when it comes to network bandwith. It might be OK for our web app to be making multiple requests to each individual service in order to render the UI when on a desktop browser but on a mobile phone it might be better to make a smaller number of requests and increase the payload response size.</p>
+<p>Bottom line is we need something in-between our clients and our services that can provide our clients with an abstraction layer. For this reason, microservice applications typically have what is called an &#x201C;API Gateway&#x201D; that clients use. If we introduce an API Gateway into our sample application here is what it would look like</p>
+<p>In this diagram the API Gateway also serves up the client side code, but that does not have to be the case. The important part is that the API Gateway knows how to talk to the services and as services evolve we can avoid making changes to the client side code and just let the API Gateway know about the changes to the services. The API Gateway can also do aggregation of service calls to optimize requests for different types of devices if we need to.</p>
+<p>While using an API Gateway is better than having the clients talk directly to the services we can do a little better. Here is another problem to consider, what happens when we scale a service in this architecture?</p>
+<p>In this picture we have scaled the Sessions Service but the API Gateway has no idea about the new service instance so how can it take advantage of the additional instance? We would have to change the API Gateway so it knows about the second instance. With features like auto-scaling provided by the cloud platform we are deployed to and the fact we might have 100s or services, modifying the API Gateway would just not scale.</p>
+<p>To solve this problem, microservice applications typically use a Service Discovery application which allows all microservices to register themselves and then broadcast their existence to other services in the application. Here is what that looks like.</p>
+<p>With our Service Discovery application now deployed, each service instance registers itself with the Service Discovery application and in turn also queries the Service Discovery application for what other services are available to it. This solves the scaling problem with our API Gateway. As we bring up more instances of XYZ service they will all register themselves with the Service Discovery application and the API Gateway will periodically query the Service Discovery application to make sure it has an updated list of services. Once the new instances have been registered with the Service Discovery application the API Gateway will get them and then be able to leverage those new instances when making requests to the service. All this can be done dynamically without changing and code in the API Gateway, which is exactly what we want.</p>
+<p>There are additional benefits to using a Service Discovery application as well. Consider the case where we have the same microservices deployed across multiple datacenters. Each datacenter has a deployment that looks like the architecture above. The Service Discovery applications in each datacenter can share data about the services running in that datacenter with each other. This would allow the application to be unaffected by a complete outage of a given service in one datacenter given the service is still available in another datacenter. This type of functionality will give our application even more resiliency to failures.</p>
+<p>At this point we have a pretty good microservices based architecture to use for our application. The one thing to note about this architecture is that there are many more moving parts than our original 3-tier architecture had.</p>
+<p>The bottom line is that like everything you do there are tradeoffs to the architectures you choose. If you need resiliency in the cloud, want to gain speed in development, and really be a truly agile organization there is no doubt that microservices give you that. However, you need to weigh those benefits against the additional challenges introduced by a more complex architecture. It is clear given the interest amongst members of the cloud community in microservices that there are many organizations facing these challenges head on and looking for solutions. It also clear that when done right, as proven by Netflix, Amazon, and others, microservices can make your applications and organization better. The decision of whether you should use microservices in your application is ultimately up to you, but I personally believe that it is a good solution for a certain class of cloud applications.</p>
+<p>Now comes the follow up question to this discussion, &#x201C;Are there tools out there that can help me build microservices?&#x201D; The answer is a resounding &#x201C;Yes&#x201D; and I will discuss some of these tools in future posts.</p>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="./using_microservices_to_build_cloud_native_applications__part_1.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Using Microservices To Build Cloud Native Applications – Part 1"><i class="fa fa-angle-left"></i></a>
+        
+        
+    </div>
+</div>
+
+        
+<script src="gitbook/app.js"></script>
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"fontSettings":{"theme":null,"family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>
