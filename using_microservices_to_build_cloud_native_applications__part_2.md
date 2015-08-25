@@ -10,6 +10,7 @@ In [part 1](http://ryanjbaxter.com/2015/07/15/using-microservices-to-build-cloud
 
 At the end of part 1 we left off with an application that had been broken apart into several microservices all working together to produce the overall experience for the end user. The architecture looked like this
 
+![http://ryanjbaxter.com/wp-content/uploads/2015/07/intro-to-microservices4.jpg](http://ryanjbaxter.com/wp-content/uploads/2015/07/intro-to-microservices4.jpg)
 
 While this architecture was much more suited for the cloud than our original monolithic architecture, I mentioned that there was still some problems we needed to address.
 
@@ -19,16 +20,19 @@ A more subtle problem has to do with the type of client communicating with the s
 
 Bottom line is we need something in-between our clients and our services that can provide our clients with an abstraction layer. For this reason, microservice applications typically have what is called an “API Gateway” that clients use. If we introduce an API Gateway into our sample application here is what it would look like
 
+![http://ryanjbaxter.com/wp-content/uploads/2015/07/intro-to-microservices6.jpg](http://ryanjbaxter.com/wp-content/uploads/2015/07/intro-to-microservices6.jpg)
 
 In this diagram the API Gateway also serves up the client side code, but that does not have to be the case. The important part is that the API Gateway knows how to talk to the services and as services evolve we can avoid making changes to the client side code and just let the API Gateway know about the changes to the services. The API Gateway can also do aggregation of service calls to optimize requests for different types of devices if we need to.
 
 While using an API Gateway is better than having the clients talk directly to the services we can do a little better. Here is another problem to consider, what happens when we scale a service in this architecture?
 
+![http://ryanjbaxter.com/wp-content/uploads/2015/07/intro-to-microservices7.jpg](http://ryanjbaxter.com/wp-content/uploads/2015/07/intro-to-microservices7.jpg)
 
 In this picture we have scaled the Sessions Service but the API Gateway has no idea about the new service instance so how can it take advantage of the additional instance? We would have to change the API Gateway so it knows about the second instance. With features like auto-scaling provided by the cloud platform we are deployed to and the fact we might have 100s or services, modifying the API Gateway would just not scale.
 
 To solve this problem, microservice applications typically use a Service Discovery application which allows all microservices to register themselves and then broadcast their existence to other services in the application. Here is what that looks like.
 
+![http://ryanjbaxter.com/wp-content/uploads/2015/07/intro-to-microservices8.jpg](http://ryanjbaxter.com/wp-content/uploads/2015/07/intro-to-microservices8.jpg)
 
 With our Service Discovery application now deployed, each service instance registers itself with the Service Discovery application and in turn also queries the Service Discovery application for what other services are available to it. This solves the scaling problem with our API Gateway. As we bring up more instances of XYZ service they will all register themselves with the Service Discovery application and the API Gateway will periodically query the Service Discovery application to make sure it has an updated list of services. Once the new instances have been registered with the Service Discovery application the API Gateway will get them and then be able to leverage those new instances when making requests to the service. All this can be done dynamically without changing and code in the API Gateway, which is exactly what we want.
 
@@ -36,6 +40,7 @@ There are additional benefits to using a Service Discovery application as well. 
 
 At this point we have a pretty good microservices based architecture to use for our application. The one thing to note about this architecture is that there are many more moving parts than our original 3-tier architecture had.
 
+![http://ryanjbaxter.com/wp-content/uploads/2015/07/intro-to-microservices.jpg](http://ryanjbaxter.com/wp-content/uploads/2015/07/intro-to-microservices.jpg)
 
 The bottom line is that like everything you do there are tradeoffs to the architectures you choose. If you need resiliency in the cloud, want to gain speed in development, and really be a truly agile organization there is no doubt that microservices give you that. However, you need to weigh those benefits against the additional challenges introduced by a more complex architecture. It is clear given the interest amongst members of the cloud community in microservices that there are many organizations facing these challenges head on and looking for solutions. It also clear that when done right, as proven by Netflix, Amazon, and others, microservices can make your applications and organization better. The decision of whether you should use microservices in your application is ultimately up to you, but I personally believe that it is a good solution for a certain class of cloud applications.
 
