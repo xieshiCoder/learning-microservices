@@ -1,3 +1,4 @@
 *.pdf
 *.log
-/pkg-config-0.28
+e-bbok/
+pkg-config-0.28/
