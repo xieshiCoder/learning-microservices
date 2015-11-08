@@ -1,3 +1,5 @@
+<https://medium.com/@erikhellman/boosting-the-performance-for-gradle-in-your-android-projects-6d5f9e4580b6>
+
 ## how to speed up gradle build time
 
 //Record some useful timing information
