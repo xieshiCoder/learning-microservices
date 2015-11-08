@@ -10,5 +10,5 @@
 * [MicroService最佳实践](best-practice/README.md)
     - [模拟业务场景]()
     - [什么才是真正的REST架构？]()
-    - [使用Gradle快速构建项目以及如何加速Gradle](/best-practice/how%20to%20use%20gradle%20and%20speed%20up%20build%20time.md)
+    - [使用Gradle快速构建项目以及如何加速Gradle](/best-practice/how_to_use_gradle_and_speed_up_build_time.md)
     - [//////]()
