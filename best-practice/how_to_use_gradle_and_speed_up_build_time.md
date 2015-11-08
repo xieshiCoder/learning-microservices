@@ -1,5 +1,7 @@
 <https://medium.com/@erikhellman/boosting-the-performance-for-gradle-in-your-android-projects-6d5f9e4580b6>
 
+[Android菜鸟成长旅程（03）——提高Gradle编译速度](http://www.loverobots.cn/android-rookie-growth-journey-03-improve-the-speed-of-gradle-compiler.html/2)
+
 ## how to speed up gradle build time
 
 //Record some useful timing information
