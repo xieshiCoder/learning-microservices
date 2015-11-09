@@ -10,7 +10,7 @@ Roy Fielding是HTTP协议（1.0版和1.1版）的主要设计者，事实上HTTP
 
 ![RESTful API](https://pic2.zhimg.com/06ee404783540f0af299042057738a99_b.jpg)
 
-在「远古时代」前端后端是融合在一起的，比如之前的PHP，JSP，ASP等等（参考之前写的一篇「Web前端开发模式演变」）。近年来随着移动互联网的飞速发展，各种类型的Client端层出不穷，就需要通过一套统一的接口分别为Web，iOS和Android乃至桌面端提供服务。另外对于广大平台来说，比如Facebook platform，微博开放平台，微信公共平台等，它们不需要有显式的前端，只需要一套提供服务的接口，于是RESTful更是它们最好的选择。
+在「远古时代」前端后端是融合在一起的，比如之前的PHP，JSP，ASP等等（参考之前写的一篇文章：[Web前端开发模式演变]()）。近年来随着移动互联网的飞速发展，各种类型的Client端层出不穷，就需要通过一套统一的接口分别为Web，iOS和Android乃至桌面端提供服务。另外对于广大平台来说，比如Facebook platform，微博开放平台，微信公共平台等，它们不需要有显式的前端，只需要一套提供服务的接口，于是RESTful更是它们最好的选择。
 
 而要理解RESTful架构，最好的方法就是去理解**Representational State Transfer**这个词组，直译过来就是「表现层状态转化」，其实它省略了主语。「表现层」其实指的是「资源」的「表现层」，所以通俗来讲就是：资源在网络中以某种表现形式进行状态转移。分解开来：
 
@@ -57,12 +57,12 @@ Struts、Spring MVC等等）也紧接着模仿了Rails的方式开始支持REST�
 
 对于什么才是真正的REST风格的误解是如此之多，而将REST作为一个便于营销的
 buzzword的挂羊头卖狗肉者也是如此之多，以至于REST的创造者Fielding终于忍无可忍了。2008年10月Fielding写了一篇博
-客，做出了一个非常明确的断言：[REST APIs must be hypertext-driven](http://roy.gbiv.com/untangled/2008/rest-apis-must-be-hypertext-driven)（REST API必须是超文本驱动的）！超文本驱动这个理念变成了一个缩写词HATEOAS，这个缩写词来自于当初Fielding博士论文中的一句话：
+客，做出了一个非常明确的断言：[REST APIs must be hypertext-driven!](http://roy.gbiv.com/untangled/2008/rest-apis-must-be-hypertext-driven)（REST API必须是超文本驱动的！）超文本驱动这个理念变成了一个缩写词HATEOAS，这个缩写词来自于当初Fielding博士论文中的一句话：
 hypermedia as the engine of application state（将超媒体作为应用状态的引擎）。其实超文本驱动（Hypertext Driven）的理念才是REST架构风格最核心的理念，也是REST风格的架构达到松耦合目标的根本原因。
 
 ## REST设计进阶
 
-当谈及REST成熟度时，一些人常常会引用Richardson所提出来的REST成熟度模型（Maturity Model），并视之为正确的度量方法。
+当谈及REST成熟度时，一些人常常会引用Richardson所提出来的REST成熟度模型（[Maturity Model](http://restcookbook.com/Miscellaneous/richardsonmaturitymodel/)），并视之为正确的度量方法。
 
 ![](http://martinfowler.com/articles/images/richardsonMaturityModel/overview.png)
 
