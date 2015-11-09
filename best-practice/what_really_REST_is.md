@@ -8,7 +8,7 @@ Roy Fielding是HTTP协议（1.0版和1.1版）的主要设计者，事实上HTTP
 
 ## Why？
 
-![RESTful API](https://pic2.zhimg.com/06ee404783540f0af299042057738a99_b.jpg)
+![RESTful API](http://www.dotnetage.com/webshared/home/images/restful-api.jpg)
 
 在「远古时代」前端后端是融合在一起的，比如之前的PHP，JSP，ASP等等（参考之前写的一篇文章：[Web前端开发模式演变]()）。近年来随着移动互联网的飞速发展，各种类型的Client端层出不穷，就需要通过一套统一的接口分别为Web，iOS和Android乃至桌面端提供服务。另外对于广大平台来说，比如Facebook platform，微博开放平台，微信公共平台等，它们不需要有显式的前端，只需要一套提供服务的接口，于是RESTful更是它们最好的选择。
 
@@ -107,11 +107,11 @@ GET https://api.example.com/profile
 - [What Is REST? -- Learn REST: A RESTful Tutorial](http://www.restapitutorial.com/lessons/whatisrest.html)
 - [什么是REST与Go语言的RESTful实现](https://github.com/astaxie/build-web-application-with-golang/blob/master/zh/08.3.md)
 - [理解RESTful架构 -- 阮一峰](http://www.ruanyifeng.com/blog/2011/09/restful.html)
-- [REST -- 知乎](http://www.zhihu.com/search?q=rest)
+- [REST 架构该怎么生动地理解？ -- 知乎](http://www.zhihu.com/question/27785028)
 - [深入浅出REST - InfoQ](http://www.infoq.com/cn/articles/rest-introduction)
 - [面向资源的架构 -- 《RESTful Web Services中文版》](http://www.cnblogs.com/heartstill/archive/2010/12/23/1915029.html)
-- [《REST实战》](book.douban.com/subject/6854551/)
+- [《REST实战》](http://book.douban.com/subject/6854551/)
 - [怎么样才算是 RESTful？读 REST in Practice](https://book.douban.com/review/5450803/)
 - [Richardson Maturity Model -- Martin Fowler](http://martinfowler.com/articles/richardsonMaturityModel.html)
 - [实现超媒体](http://www.infoq.com/cn/articles/implementing-hypermedia)
-- [GitHub API](https://developer.github.com/v3/)
+- [GitHub API文档](https://developer.github.com/v3/)
