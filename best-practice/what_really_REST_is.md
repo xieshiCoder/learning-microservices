@@ -39,10 +39,10 @@ Roy Fielding是HTTP协议（1.0版和1.1版）的主要设计者，事实上HTTP
 
 HTTP请求方法在RESTful API中的典型应用：
 
-|资源 | GET | PUT | POST | DELETE
-|----|-----|-----|------|--------
-|一组资源的URI，比如`http://example.com/resources/`|列出URI，以及该资源组中每个资源的详细信息（后者可选）。|使用给定的一组资源替换当前整组资源。|在本组资源中创建/追加一个新的资源。该操作往往返回新资源的URL。|删除整组资源。
-|单个资源的URI，比如`http://example.com/resources/142`|获取指定的资源的详细信息，格式可以自选一个合适的网络媒体类型（比如：XML、JSON等）|替换/创建指定的资源。并将其追加到相应的资源组中。|把指定的资源当做一个资源组，并在其下创建/追加一个新的元素，使其隶属于当前资源。|删除指定的元素。
+|资源 | GET | PUT | POST | DELETE|
+|----|-----|-----|------|-------|
+|一组资源的URI，比如`http://example.com/resources/`|列出URI，以及该资源组中每个资源的详细信息（后者可选）。|使用给定的一组资源替换当前整组资源。|在本组资源中创建/追加一个新的资源。该操作往往返回新资源的URL。|删除整组资源。|
+|单个资源的URI，比如`http://example.com/resources/142`|获取指定的资源的详细信息，格式可以自选一个合适的网络媒体类型（比如：XML、JSON等）|替换/创建指定的资源。并将其追加到相应的资源组中。|把指定的资源当做一个资源组，并在其下创建/追加一个新的元素，使其隶属于当前资源。|删除指定的元素。|
 
 ## REST的误解
 
@@ -72,7 +72,7 @@ hypermedia as the engine of application state（将超媒体作为应用状态�
 
 ### 第二级：每一个URI代表一种资源，支持HTTP动词。
 
-此时使用多个URI的话，需要让不同的URI代表不同的资源，同时使用多个HTTP方法操作这些资源，例如使用POST/GET/PUT/DELET分别进行CRUD操作。这时候HTTP头和有效载荷都包含业务逻辑，例如HTTP方法对应CRUD操作，HTTP状态码对应操作结果的状态。我们现在看到的大多数所谓RESTful API做到的也就是这个级别。《REST实战》的译者也谈到：悟性差的人，理解到CRUD式Web服务就满足了。而悟性好的人，可以彻底理解超文本驱动，甚至是与REST关系密切的语义网，最终达到
+此时使用多个URI的话，需要让不同的URI代表不同的资源（注意[多个URI可能指向同一个Resource，而一个URI不能指向不同Resource](http://www.ibm.com/developerworks/cn/webservices/1101_mace_restservicePart1/1101_mace_restservicePart1.html)。），同时使用多个HTTP方法操作这些资源，例如使用POST/GET/PUT/DELET分别进行CRUD操作。这时候HTTP头和有效载荷都包含业务逻辑，例如HTTP方法对应CRUD操作，HTTP状态码对应操作结果的状态。我们现在看到的大多数所谓RESTful API做到的也就是这个级别。《REST实战》的译者也谈到：悟性差的人，理解到CRUD式Web服务就满足了。而悟性好的人，可以彻底理解超文本驱动，甚至是与REST关系密切的语义网，最终达到
 REST开发的最高境界。
 
 ### 第三级：HATEOAS，使用超媒体（hypermedia）作为应用状态引擎。
