@@ -218,7 +218,7 @@ Gradle Wrapper是由Windows batch脚本以及OS X和Linux的shell脚本共同组
 
 既然offline模式所节约的时候非常多，那就可以根据`gradle.properties`中所定义的项目依赖库的版本是否更新，从而增量使用offline模式来连接远程参考解析依赖。
 
-可以通过`gradle.startParameter.setOffline(true)`设置offline模式的参数，参考[这里](https://discuss.gradle.org/t/is-it-possible-to-make-offline-switch-to-default-setting-from-build-gradle/3439)，但是需要学习Groovy语言去定义一个增量任务，暂且就没有深究了。
+可以通过`gradle.startParameter.setOffline(true)`设置offline模式的参数，参考[这里](https://discuss.gradle.org/t/is-it-possible-to-make-offline-switch-to-default-setting-from-build-gradle/3439)，但是需要学习Groovy语言去定义一个增量任务，或者是直接在`ci`脚本中加入检测`gradle.properties`文件是否有更新的逻辑，从而决定是否开启offline模式，暂且就没有深究了。
 
 ## 参考资料
 
