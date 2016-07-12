@@ -17,14 +17,20 @@
 - 订单信息 b2b-order-service
     + order centre 提供咖啡交易的具体信息
     + 分为 getOrder 和 getOrderList 两个接口
-- 网站开发 order webapp 前后端分离
-    + 前端 order-manager-webapp
-    + 后端 order-manager-services
+    + 并含有相关服务的集成，比如：
+        * 下订单 placeAnOrder
+        * 获取门店照片 storePhotos
+- 电商网站 my-order-manager webapp 前后端分离
+    + 前端 my-order-manager-webapp
+    + 后端 my-order-manager-services
 
 ## 遗留系统问题分析
 
 - 一些依赖的旧服务采用 SOAP，只能用 XML 进行交互，并且根据 WSDL 生成相关代码，每当一更新就有可能破坏接口，当字段发生改变就有可能因为无法匹配而失败。
     + 在 REST service 底下一层抽象出 connectors 的概念，封装成为一个 library
     + 这个 connectors 有两种方式获取数据
-        * getOrder 使用
+        * getOrder 使用 Apache CXF 来生成 WDSLToJava 代码
+            - 包含 Domain 和对应的接口
+        * getOrderList 和 getStorePhotos 则使用常规 SOAP Request 来处理旧 API
+            - commons-client
 
