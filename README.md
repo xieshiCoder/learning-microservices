@@ -12,4 +12,14 @@
     + 开源库坑
 - 模拟业务 -> REST实战（Restbucks）
 - 可改进的地方
+- 依赖拆解
+- CI/CD 与部署
+- 开发环境设置
 
+## References
+
+- [《REST实战》 - Douban](https://www.douban.com/search?q=REST实战)
+
+## Development
+
+- based on [GitBook - Google Search](https://www.google.com/search?q=GitBook)
